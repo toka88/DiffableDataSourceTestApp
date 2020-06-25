@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CountriesViewControllerDelegate: class {
+    func selectedCountry(_ country: Country)
+}
+
 private extension CountriesViewController {
     enum Sections {
         case main
@@ -18,7 +22,14 @@ final class CountriesViewController: UIViewController {
 
     // MARK: - UI
 
-    @IBOutlet weak var tableView: UITableView!
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.registerCellClass(CountryCellTableViewCell.self)
+        return tableView
+    }()
+
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -30,6 +41,7 @@ final class CountriesViewController: UIViewController {
 
     // MARK: - Data
 
+    private weak var delegate: CountriesViewControllerDelegate?
     private var dataSource: UITableViewDiffableDataSource<Sections, Country>!
     private var countries: [Country] = []
     private var filteredCountries: [Country] = [] {
@@ -39,6 +51,15 @@ final class CountriesViewController: UIViewController {
             snapshot.appendItems(filteredCountries, toSection: .main)
             dataSource.apply(snapshot, animatingDifferences: true)
         }
+    }
+
+    init(delegate: CountriesViewControllerDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Life cycles
@@ -52,12 +73,16 @@ final class CountriesViewController: UIViewController {
     }
 
     private func configureUI() {
+        title = NSLocalizedString("Countries", comment: "")
         navigationItem.searchController = searchController
+
+        view.addSubview(tableView)
+        tableView.pinToSafeArea(ofView: view)
     }
 
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, country) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCellTableViewCell") as! CountryCellTableViewCell
+            let cell = tableView.dequeueReusableCell(CountryCellTableViewCell.self, for: indexPath)
             cell.updateData(country)
             return cell
         })
@@ -98,11 +123,11 @@ final class CountriesViewController: UIViewController {
 extension CountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let country = dataSource.itemIdentifier(for: indexPath), let flagURL = country.flag else {
+        guard let country = dataSource.itemIdentifier(for: indexPath) else {
             return
         }
-        let vc = FlagViewController(flagURL: flagURL, name: country.name)
-        navigationController?.pushViewController(vc, animated: true)
+        
+        delegate?.selectedCountry(country)
     }
 }
 

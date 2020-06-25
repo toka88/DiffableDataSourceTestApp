@@ -3,27 +3,46 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2B03235724A378240060E44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03235624A378240060E44B /* AppDelegate.swift */; };
 		2B03235924A378240060E44B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03235824A378240060E44B /* SceneDelegate.swift */; };
-		2B03235B24A378240060E44B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03235A24A378240060E44B /* ViewController.swift */; };
 		2B03235E24A378240060E44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B03235C24A378240060E44B /* Main.storyboard */; };
 		2B03236024A378290060E44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03235F24A378290060E44B /* Assets.xcassets */; };
 		2B03236324A378290060E44B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B03236124A378290060E44B /* LaunchScreen.storyboard */; };
+		2B03236D24A37A7E0060E44B /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B03236C24A37A7E0060E44B /* countries.json */; };
+		2B03237024A37B410060E44B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03236F24A37B410060E44B /* Country.swift */; };
+		2B03237224A380070060E44B /* CountryCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03237124A380070060E44B /* CountryCellTableViewCell.swift */; };
+		2B03237424A382D20060E44B /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03237324A382D20060E44B /* CountriesViewController.swift */; };
+		2B03237724A38BEE0060E44B /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2B03237624A38BEE0060E44B /* AlamofireImage */; };
+		2B03237A24A391E60060E44B /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03237924A391E60060E44B /* NumberFormatter.swift */; };
+		2B54BD1624A485BE0054C0D2 /* FlagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1524A485BE0054C0D2 /* FlagViewController.swift */; };
+		2B54BD1924A49B960054C0D2 /* CountrySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1824A49B960054C0D2 /* CountrySplitViewController.swift */; };
+		2B54BD1B24A49C560054C0D2 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1A24A49C560054C0D2 /* EmptyViewController.swift */; };
+		2B54BD1D24A49D850054C0D2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1C24A49D850054C0D2 /* UIView.swift */; };
+		2B54BD1F24A4A76E0054C0D2 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B03235324A378240060E44B /* DiffableDataSourceTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiffableDataSourceTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B03235624A378240060E44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B03235824A378240060E44B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2B03235A24A378240060E44B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2B03235D24A378240060E44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B03235F24A378290060E44B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B03236224A378290060E44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B03236424A378290060E44B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B03236C24A37A7E0060E44B /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		2B03236F24A37B410060E44B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		2B03237124A380070060E44B /* CountryCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellTableViewCell.swift; sourceTree = "<group>"; };
+		2B03237324A382D20060E44B /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		2B03237924A391E60060E44B /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		2B54BD1524A485BE0054C0D2 /* FlagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagViewController.swift; sourceTree = "<group>"; };
+		2B54BD1824A49B960054C0D2 /* CountrySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySplitViewController.swift; sourceTree = "<group>"; };
+		2B54BD1A24A49C560054C0D2 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		2B54BD1C24A49D850054C0D2 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B03237724A38BEE0060E44B /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +76,80 @@
 		2B03235524A378240060E44B /* DiffableDataSourceTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				2B03237824A391D60060E44B /* Extensions */,
+				2B03236E24A37A910060E44B /* Models */,
+				2B03236A24A378610060E44B /* Controllers */,
+				2B03236B24A378690060E44B /* Resources */,
 				2B03235624A378240060E44B /* AppDelegate.swift */,
 				2B03235824A378240060E44B /* SceneDelegate.swift */,
-				2B03235A24A378240060E44B /* ViewController.swift */,
 				2B03235C24A378240060E44B /* Main.storyboard */,
 				2B03235F24A378290060E44B /* Assets.xcassets */,
 				2B03236124A378290060E44B /* LaunchScreen.storyboard */,
 				2B03236424A378290060E44B /* Info.plist */,
 			);
 			path = DiffableDataSourceTestApp;
+			sourceTree = "<group>";
+		};
+		2B03236A24A378610060E44B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B54BD1724A49B450054C0D2 /* Country */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2B03236B24A378690060E44B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B03236C24A37A7E0060E44B /* countries.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2B03236E24A37A910060E44B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2B03236F24A37B410060E44B /* Country.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2B03237824A391D60060E44B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */,
+				2B03237924A391E60060E44B /* NumberFormatter.swift */,
+				2B54BD1C24A49D850054C0D2 /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2B15BC9724A47E8600022177 /* CountrySearch */ = {
+			isa = PBXGroup;
+			children = (
+				2B03237124A380070060E44B /* CountryCellTableViewCell.swift */,
+				2B03237324A382D20060E44B /* CountriesViewController.swift */,
+			);
+			path = CountrySearch;
+			sourceTree = "<group>";
+		};
+		2B54BD1424A485A60054C0D2 /* FlagController */ = {
+			isa = PBXGroup;
+			children = (
+				2B54BD1524A485BE0054C0D2 /* FlagViewController.swift */,
+			);
+			path = FlagController;
+			sourceTree = "<group>";
+		};
+		2B54BD1724A49B450054C0D2 /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				2B54BD1424A485A60054C0D2 /* FlagController */,
+				2B15BC9724A47E8600022177 /* CountrySearch */,
+				2B54BD1824A49B960054C0D2 /* CountrySplitViewController.swift */,
+				2B54BD1A24A49C560054C0D2 /* EmptyViewController.swift */,
+			);
+			path = Country;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +168,9 @@
 			dependencies = (
 			);
 			name = DiffableDataSourceTestApp;
+			packageProductDependencies = (
+				2B03237624A38BEE0060E44B /* AlamofireImage */,
+			);
 			productName = DiffableDataSourceTestApp;
 			productReference = 2B03235324A378240060E44B /* DiffableDataSourceTestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +199,9 @@
 				Base,
 			);
 			mainGroup = 2B03234A24A378240060E44B;
+			packageReferences = (
+				2B03237524A38BEE0060E44B /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = 2B03235424A378240060E44B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +218,7 @@
 			files = (
 				2B03236324A378290060E44B /* LaunchScreen.storyboard in Resources */,
 				2B03236024A378290060E44B /* Assets.xcassets in Resources */,
+				2B03236D24A37A7E0060E44B /* countries.json in Resources */,
 				2B03235E24A378240060E44B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +230,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B03235B24A378240060E44B /* ViewController.swift in Sources */,
+				2B54BD1D24A49D850054C0D2 /* UIView.swift in Sources */,
+				2B03237224A380070060E44B /* CountryCellTableViewCell.swift in Sources */,
 				2B03235724A378240060E44B /* AppDelegate.swift in Sources */,
+				2B03237024A37B410060E44B /* Country.swift in Sources */,
 				2B03235924A378240060E44B /* SceneDelegate.swift in Sources */,
+				2B54BD1924A49B960054C0D2 /* CountrySplitViewController.swift in Sources */,
+				2B54BD1624A485BE0054C0D2 /* FlagViewController.swift in Sources */,
+				2B54BD1F24A4A76E0054C0D2 /* UITableView.swift in Sources */,
+				2B54BD1B24A49C560054C0D2 /* EmptyViewController.swift in Sources */,
+				2B03237A24A391E60060E44B /* NumberFormatter.swift in Sources */,
+				2B03237424A382D20060E44B /* CountriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B03237524A38BEE0060E44B /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2B03237624A38BEE0060E44B /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B03237524A38BEE0060E44B /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2B03234B24A378240060E44B /* Project object */;
 }

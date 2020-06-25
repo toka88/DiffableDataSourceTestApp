@@ -20,15 +20,15 @@ extension UITableView {
      Registers a cell class with the table view using the class's default reuse identifier.
      */
     func registerCellClass(_ cellClass: UITableViewCell.Type) {
-        register(cellClass, forCellReuseIdentifier: cellClass.defaultReuseIdentifier)
+        register(cellClass, forCellReuseIdentifier: cellClass.description())
     }
 
     /**
      Dequeues and returns a cell of the specified class, using the cell class's default reuse identifier.
      */
     func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
-        guard let cell = dequeueReusableCell(withIdentifier: cellClass.defaultReuseIdentifier, for: indexPath) as? T else {
-            fatalError("Incorrect type for dequeued cell with identifier: \(cellClass.defaultReuseIdentifier)")
+        guard let cell = dequeueReusableCell(withIdentifier: cellClass.description(), for: indexPath) as? T else {
+            fatalError("Incorrect type for dequeued cell with identifier: \(cellClass.description())")
         }
 
         return cell

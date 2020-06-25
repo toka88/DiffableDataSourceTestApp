@@ -14,6 +14,7 @@ extension NumberFormatter {
         numberFormatter.usesGroupingSeparator = true
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 0
+        numberFormatter.groupingSeparator = " "
         return numberFormatter
     }()
 }

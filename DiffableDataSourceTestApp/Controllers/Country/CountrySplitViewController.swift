@@ -8,23 +8,26 @@
 
 import UIKit
 
-class CountrySplitViewController: UISplitViewController {
+final class CountrySplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let masterNC = UINavigationController(rootViewController: CountriesViewController(delegate: self))
+        masterNC.view.backgroundColor = .black
+        let detailNC = UINavigationController(rootViewController: EmptyViewController())
+        viewControllers = [masterNC, detailNC]
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension CountrySplitViewController: CountriesViewControllerDelegate {
+    func selectedCountry(_ country: Country) {
+        let nc = viewControllers[1] as! UINavigationController
+        var flagVC = nc.viewControllers[0] as? FlagViewController
+        if flagVC == nil {
+            flagVC = FlagViewController()
+            nc.viewControllers[0] = flagVC!
+        }
+        flagVC?.updateData(country: country)
     }
-    */
-
 }

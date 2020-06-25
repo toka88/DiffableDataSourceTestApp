@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+struct Country: Codable, Hashable {
+    static func == (lhs: Country, rhs: Country) -> Bool {
+        return lhs.name == rhs.name
+    }
+
+
+    let name: String?
+    let alpha2Code: String?
+    let capital: String?
+    let population: Int?
+    let flag: URL?
+}
