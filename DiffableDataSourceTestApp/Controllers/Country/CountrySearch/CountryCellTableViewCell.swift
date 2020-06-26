@@ -6,7 +6,7 @@
 //  Copyright © 2020 Goran Tokovic. All rights reserved.
 //
 
-import AlamofireImage
+//import AlamofireImage
 import UIKit
 
 final class CountryCellTableViewCell: UITableViewCell {
@@ -98,12 +98,12 @@ final class CountryCellTableViewCell: UITableViewCell {
             polulationLabel.text = "N/A"
         }
 
-        if let code = country.alpha2Code,
-            let url = URL(string: "https://www.countryflags.io/\(code.lowercased())/flat/64.png") {
-            flagImageView.af.setImage(withURL: url, placeholderImage: type(of: self).placeholder, imageTransition: .crossDissolve(0.3))
-        } else {
-            flagImageView.image = type(of: self).placeholder
-        }
+//        if let code = country.alpha2Code,
+//            let url = URL(string: "https://www.countryflags.io/\(code.lowercased())/flat/64.png") {
+//            flagImageView.af.setImage(withURL: url, placeholderImage: type(of: self).placeholder, imageTransition: .crossDissolve(0.3))
+//        } else {
+//            flagImageView.image = type(of: self).placeholder
+//        }
     }
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		2B03237024A37B410060E44B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03236F24A37B410060E44B /* Country.swift */; };
 		2B03237224A380070060E44B /* CountryCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03237124A380070060E44B /* CountryCellTableViewCell.swift */; };
 		2B03237424A382D20060E44B /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03237324A382D20060E44B /* CountriesViewController.swift */; };
-		2B03237724A38BEE0060E44B /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2B03237624A38BEE0060E44B /* AlamofireImage */; };
 		2B03237A24A391E60060E44B /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03237924A391E60060E44B /* NumberFormatter.swift */; };
 		2B54BD1624A485BE0054C0D2 /* FlagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1524A485BE0054C0D2 /* FlagViewController.swift */; };
 		2B54BD1924A49B960054C0D2 /* CountrySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1824A49B960054C0D2 /* CountrySplitViewController.swift */; };
@@ -50,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B03237724A38BEE0060E44B /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,7 +167,6 @@
 			);
 			name = DiffableDataSourceTestApp;
 			packageProductDependencies = (
-				2B03237624A38BEE0060E44B /* AlamofireImage */,
 			);
 			productName = DiffableDataSourceTestApp;
 			productReference = 2B03235324A378240060E44B /* DiffableDataSourceTestApp.app */;
@@ -200,7 +197,6 @@
 			);
 			mainGroup = 2B03234A24A378240060E44B;
 			packageReferences = (
-				2B03237524A38BEE0060E44B /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 2B03235424A378240060E44B /* Products */;
 			projectDirPath = "";
@@ -438,25 +434,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2B03237524A38BEE0060E44B /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2B03237624A38BEE0060E44B /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2B03237524A38BEE0060E44B /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2B03234B24A378240060E44B /* Project object */;
 }
