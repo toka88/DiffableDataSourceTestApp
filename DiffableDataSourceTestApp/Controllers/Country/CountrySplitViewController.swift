@@ -13,7 +13,7 @@ final class CountrySplitViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let masterNC = UINavigationController(rootViewController: CountriesViewController(delegate: self))
+        let masterNC = UINavigatijonController(rootViewController: CountriesViewController(delegate: self))
         masterNC.view.backgroundColor = .black
         let detailNC = UINavigationController(rootViewController: EmptyViewController())
         viewControllers = [masterNC, detailNC]
