@@ -6,8 +6,12 @@
 //  Copyright © 2020 Goran Tokovic. All rights reserved.
 //
 
-import UIKit
+import XCTest
+@testable import DiffableDataSourceTestApp
 
-class NumberFormatterTests: XCTest {
+class NumberFormatterTests: XCTestCase {
 
+    func testSeparatedHundreds() {
+        XCTAssertEqual(NumberFormatter.separatedHundreds.string(from: NSNumber(value: 123456789.23)), "123 456 789")
+    }
 }
