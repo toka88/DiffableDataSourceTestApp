@@ -120,7 +120,7 @@ final class CountriesViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension CountriesViewController: UITableViewDelegate {
+extension CountriesViewController: UITableViewDelegate { 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let country = dataSource.itemIdentifier(for: indexPath) else {
