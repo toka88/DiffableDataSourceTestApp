@@ -110,7 +110,7 @@ final class CountryCellTableViewCell: UITableViewCell {
 private extension UIImage {
     static func coloredImage(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         let rect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginIsmageContextWithOptions(rect.size, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
         color.setFill()
         UIRectFill(rect)
         let image = UIGraphicsGetImageFromCurrentImageContext()
