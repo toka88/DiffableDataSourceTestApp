@@ -14,4 +14,8 @@ class NumberFormatterTests: XCTestCase {
     func testSeparatedHundreds() {
         XCTAssertEqual(NumberFormatter.separatedHundreds.string(from: NSNumber(value: 123456789.23)), "123 456 789")
     }
+
+    func testFalling() {
+        XCTAssertTrue(false, "Demo test")
+    }
 }
