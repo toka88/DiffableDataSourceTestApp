@@ -18,7 +18,7 @@ private extension CountriesViewController {
     }
 }
 
-final class CountriesViewController: UIViewController {
+final class CountriesViewController: BaseViewController {
 
     // MARK: - UI
 
