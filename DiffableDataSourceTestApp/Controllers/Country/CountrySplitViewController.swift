@@ -24,7 +24,7 @@ final class CountrySplitViewController: UISplitViewController {
     }
 }
 
-extension CountrySplitViewController:  CountriesViewControllerDelegate {
+extension CountrySplitViewController: CountriesViewControllerDelegate {
     func selectedCountry(_ country: Country) {
         showDetailViewController(detailsNavigationController, sender: nil)
         flagController.updateData(country: country)
