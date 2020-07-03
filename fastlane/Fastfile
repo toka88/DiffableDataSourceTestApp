@@ -1,13 +1,62 @@
 default_platform(:ios)
 platform :ios do
-  desc "Description of what the lane does"
-  lane :tests do
-	desc "Testing the app"
-        run_tests(scheme: "DiffableDataSourceTestApp")
-  end
+ 	desc "Description of what the lane does"
+  	lane :tests do
+		desc "Testing the app"
+        	run_tests(scheme: "DiffableDataSourceTestApp")
+  	end
 
-  lane :beta do
-	desc "Building the app"
-  	build_app(scheme: "DiffableDataSourceTestApp")
-  end
+  	lane :create_app do
+		desc "Create new app version"
+  		produce
+  	end
+
+  	lane :screenshot do
+    		snapshot
+  	end
+
+	lane :beta do
+	
+		cert
+  		sigh(force: true)
+		
+		increment_build_number(
+      			build_number: latest_testflight_build_number() + 1,
+      			xcodeproj: "./DiffableDataSourceTestApp.xcodeproj"
+    		)
+		
+		clear_derived_data
+  		build_app(
+			scheme: "DiffableDataSourceTestApp",
+			clean: true
+		)
+
+  		# Upload the application to Testflight
+		upload_to_testflight(
+			skip_waiting_for_build_processing: true,
+  			beta_app_feedback_email: "goran.tokovic@digitalatrium.rs",
+  			beta_app_description: "Beta app description",
+			beta_app_review_info: {
+    				contact_email: "goran.tokovic@digitalatrium.rs",
+    				contact_first_name: "Goran",
+    				contact_last_name: "Tokovic",
+    				contact_phone: "+381643513338",
+    				demo_account_name: "test@test.com",
+    				demo_account_password: "12345678",
+    				notes: "this is review note for the reviewer <3 thank you for reviewing"
+  			},
+			localized_build_info: {
+    				"default": {
+      					whats_new: "What is new in this version",
+    				},
+  			},
+			groups: ["Public Group"]
+		)
+
+		slack(
+           		message: "Successfully distributed a new beta build",
+           		success: true,
+           		slack_url: "https://hooks.slack.com/services/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",
+       		)
+	end
 end
