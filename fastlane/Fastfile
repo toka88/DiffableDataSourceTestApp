@@ -19,7 +19,7 @@ platform :ios do
 		)
 	end
 	  
-	desc "Refresh Jenkins keychain"
+	desc "Refresh Jenkins keychains"
 	lane :refreshJenkinsKeychain do
 		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
   		create_keychain(
