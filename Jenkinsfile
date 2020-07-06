@@ -140,9 +140,10 @@ pipeline {
 
         stage('Deploy to beta') {
             when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
+                branch 'development'
+                // expression {
+                //     return env.shouldBuild != "false" 
+                // }
             }
             steps {
                 sh "fastlane beta"
