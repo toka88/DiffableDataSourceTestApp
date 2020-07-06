@@ -19,7 +19,7 @@ platform :ios do
 		slack(
 			message: options[:message],
 			success: true,
-			slack_url: "https://hooks.slack.com/services/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",
+			slack_url: "https://hooks.slack.com/services/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",
 		)
 	end
 	  
@@ -125,7 +125,7 @@ platform :ios do
 		slack(
            		message: "Successfully distributed a new beta build",
            		success: true,
-           		slack_url: "https://hooks.slack.com/services/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",
+           		slack_url: "https://hooks.slack.com/services/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",
        		)
 	end
 end
