@@ -49,24 +49,6 @@ pipeline {
             }
         }
 
-        stage('Run Unit and UI Tests') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                script {
-                    try {
-                        // Run all the tests
-                    } catch(exc) {
-                        currentBuild.result = "UNSTABLE"
-                        error('There are failed tests.')
-                    }
-                }
-            }
-        }
-
         /********* Keychain *********/
 
         stage('Reinitialize jenkins keychain') {
