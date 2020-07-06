@@ -22,7 +22,7 @@ pipeline {
     }
  
     triggers {
-        pollSCM ignorePostCommitHooks: true, scmpoll_spec: pollSpec
+        pollSCM ignorePostCommitHooks: false, scmpoll_spec: pollSpec
     }
 
     stages {
