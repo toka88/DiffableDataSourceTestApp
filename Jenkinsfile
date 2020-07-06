@@ -85,7 +85,7 @@ pipeline {
                 script {
                     try {
                         echo "Pokrenuti testovi"
-                        sh "/usr/local/bin/fastlane runTests" 
+                        sh "/usr/local/bin/fastlane tests" 
                     } catch(exc) {
                          echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"
