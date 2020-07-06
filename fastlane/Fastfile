@@ -70,7 +70,11 @@ platform :ios do
 	lane :runTests do
 		desc "Testing the app"
 		reset_simulator_contents(os_versions: ["13.5"])
-        run_tests(scheme: "DiffableDataSourceTestApp")
+		scan(
+			scheme: "DiffableDataSourceTestApp",
+			devices: ["iPhone 8"],
+			output_style: "standard")
+        # run_tests(scheme: "DiffableDataSourceTestApp")
   	end
 
   	desc "Create coverage html"
