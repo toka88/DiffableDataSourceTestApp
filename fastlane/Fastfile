@@ -1,13 +1,8 @@
 default_platform(:ios)
 platform :ios do
- 	desc "Description of what the lane does"
-  	lane :tests do
-		desc "Testing the app"
-        	run_tests(scheme: "DiffableDataSourceTestApp")
-  	end
-
+ 	desc "Create new app"
   	lane :create_app do
-		desc "Create new app version"
+		desc "Create new app on AppleDeveloper, AppStoreConnect..."
   		produce
   	end
 
@@ -15,6 +10,7 @@ platform :ios do
     	snapshot
 	end
 
+	desc "Send custom message to slack channel"
 	lane :sendInfoToSlack do |options|
 		slack(
 			message: options[:message],
@@ -23,6 +19,7 @@ platform :ios do
 		)
 	end
 	  
+	desc "Refresh Jenkins keychain"
 	lane :refreshJenkinsKeychain do
 		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
   		create_keychain(
@@ -34,6 +31,7 @@ platform :ios do
   	)
 	end
 
+	desc "Fetch certicifates"
 	lane :matchPopulateJenkinsKeychain do
 		# register_devices(devices_file: "./fastlane/devices.txt")
 	  
@@ -60,6 +58,7 @@ platform :ios do
 		)
 	end
 
+	desc "Install pods"
 	lane :installPods do 
 		cocoapods(
 			clean_install: true,
@@ -68,11 +67,10 @@ platform :ios do
 	end
 
 	desc "Run unit and ui tests"
-	 lane :runTests do
+	lane :runTests do
+		desc "Testing the app"
 		reset_simulator_contents(os_versions: ["13.5"])
-    	run_tests(
-      		scheme: "DiffableDataSourceTestApp"
-    	)
+        run_tests(scheme: "DiffableDataSourceTestApp")
   	end
 
   	desc "Create coverage html"
@@ -88,6 +86,7 @@ platform :ios do
     	)
   	end
 
+	desc "Upload app to TestFlight and notify testers"
 	lane :beta do
 	
 		cert
@@ -131,10 +130,5 @@ platform :ios do
            		success: true,
            		slack_url: "https://hooks.slack.com/services/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",
        		)
-	end
-
-	lane :goran do
-		refreshJenkinsKeychain
-		matchPopulateJenkinsKeychain
 	end
 end

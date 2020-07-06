@@ -84,12 +84,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo "Pokrenuti testovi"
-                        sh "/usr/local/bin/fastlane tests" 
+                        sh "/usr/local/bin/fastlane runTests" 
                     } catch(exc) {
                          echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"
-                        throw exc
+                        // throw exc
                         error('There are failed tests.')
                     }
                 }

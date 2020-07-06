@@ -16,16 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios tests
-```
-fastlane ios tests
-```
-Description of what the lane does
 ### ios create_app
 ```
 fastlane ios create_app
 ```
-
+Create new app
 ### ios screenshot
 ```
 fastlane ios screenshot
@@ -35,22 +30,22 @@ fastlane ios screenshot
 ```
 fastlane ios sendInfoToSlack
 ```
-
+Send custom message to slack channel
 ### ios refreshJenkinsKeychain
 ```
 fastlane ios refreshJenkinsKeychain
 ```
-
+Refresh Jenkins keychain
 ### ios matchPopulateJenkinsKeychain
 ```
 fastlane ios matchPopulateJenkinsKeychain
 ```
-
+Fetch certicifates
 ### ios installPods
 ```
 fastlane ios installPods
 ```
-
+Install pods
 ### ios runTests
 ```
 fastlane ios runTests
@@ -65,12 +60,7 @@ Create coverage html
 ```
 fastlane ios beta
 ```
-
-### ios goran
-```
-fastlane ios goran
-```
-
+Upload app to TestFlight and notify testers
 
 ----
 
