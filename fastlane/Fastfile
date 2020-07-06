@@ -69,12 +69,14 @@ platform :ios do
 	desc "Run unit and ui tests"
 	lane :runTests do
 		desc "Testing the app"
-		reset_simulator_contents(os_versions: ["13.5"])
 		scan(
 			scheme: "DiffableDataSourceTestApp",
-			devices: ["iPhone 8"],
-			output_style: "standard")
-        # run_tests(scheme: "DiffableDataSourceTestApp")
+			device: "iPhone 8",
+			output_style: "standard",
+			reset_simulator: true,
+			force_quit_simulator: true,
+			deployment_target_version:"13.5"
+		)
   	end
 
   	desc "Create coverage html"
