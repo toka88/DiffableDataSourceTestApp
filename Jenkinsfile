@@ -45,7 +45,7 @@ pipeline {
 
         stage('Send info to Slack') {
             steps {
-                slackSend color: "#2222FF", message: slackMessage
+                sh "fastlane sendInfoToSlack message:\"${slackMessage}\""
             }
         }
 

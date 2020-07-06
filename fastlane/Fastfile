@@ -14,6 +14,14 @@ platform :ios do
   	lane :screenshot do
     	snapshot
 	end
+
+	lane :sendInfoToSlack do |options|
+		slack(
+			message: options[:message],
+			success: true,
+			slack_url: "https://hooks.slack.com/services/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",
+		)
+	end
 	  
 	lane :refreshJenkinsKeychain do
 		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
