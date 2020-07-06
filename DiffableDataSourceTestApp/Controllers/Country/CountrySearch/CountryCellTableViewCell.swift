@@ -24,6 +24,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
         label.numberOfLines = 0
+        label.textColor = .text
         return label
     }()
 
@@ -31,6 +32,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = .text
         return label
     }()
 
@@ -38,6 +40,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = .text
         return label
     }()
 
@@ -45,6 +48,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         configureContstraints()
+        backgroundColor = .background
     }
 
     required init?(coder: NSCoder) {

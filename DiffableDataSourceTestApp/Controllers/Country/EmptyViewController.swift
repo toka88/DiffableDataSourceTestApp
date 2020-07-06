@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class EmptyViewController: UIViewController {
-
+final class EmptyViewController: BaseViewController {
     private lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = NSLocalizedString("Not selected country", comment: "")
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .text
         return label
     }()
 

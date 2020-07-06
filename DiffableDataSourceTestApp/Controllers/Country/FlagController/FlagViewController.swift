@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-final class FlagViewController: UIViewController {
+final class FlagViewController: BaseViewController {
 
     // MARK: - UI
 

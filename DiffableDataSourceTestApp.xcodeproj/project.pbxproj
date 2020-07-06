@@ -24,6 +24,8 @@
 		2B54BD1F24A4A76E0054C0D2 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */; };
 		2B973EA124A626400023F33D /* DiffableDataSourceTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */; };
 		2B973EAA24A626CE0023F33D /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B973EA924A626CE0023F33D /* NumberFormatterTests.swift */; };
+		2BF09C3424AF396E0050D191 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF09C3324AF396E0050D191 /* BaseViewController.swift */; };
+		2BF09C3624AF397F0050D191 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF09C3524AF397F0050D191 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceTestAppTests.swift; sourceTree = "<group>"; };
 		2B973EA224A626400023F33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B973EA924A626CE0023F33D /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
+		2BF09C3324AF396E0050D191 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2BF09C3524AF397F0050D191 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				2B54BD1724A49B450054C0D2 /* Country */,
+				2BF09C3324AF396E0050D191 /* BaseViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */,
 				2B03237924A391E60060E44B /* NumberFormatter.swift */,
 				2B54BD1C24A49D850054C0D2 /* UIView.swift */,
+				2BF09C3524AF397F0050D191 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,9 +310,11 @@
 				2B03235724A378240060E44B /* AppDelegate.swift in Sources */,
 				2B03237024A37B410060E44B /* Country.swift in Sources */,
 				2B03235924A378240060E44B /* SceneDelegate.swift in Sources */,
+				2BF09C3424AF396E0050D191 /* BaseViewController.swift in Sources */,
 				2B54BD1924A49B960054C0D2 /* CountrySplitViewController.swift in Sources */,
 				2B54BD1624A485BE0054C0D2 /* FlagViewController.swift in Sources */,
 				2B54BD1F24A4A76E0054C0D2 /* UITableView.swift in Sources */,
+				2BF09C3624AF397F0050D191 /* UIColor.swift in Sources */,
 				2B54BD1B24A49C560054C0D2 /* EmptyViewController.swift in Sources */,
 				2B03237A24A391E60060E44B /* NumberFormatter.swift in Sources */,
 				2B03237424A382D20060E44B /* CountriesViewController.swift in Sources */,

@@ -9,6 +9,8 @@
 import UIKit
 
 final class CountrySplitViewController: UISplitViewController {
+    private lazy var flagController: FlagViewController = FlagViewController()
+    private lazy var detailsNavigationController: UINavigationController = UINavigationController(rootViewController: flagController)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,17 +19,14 @@ final class CountrySplitViewController: UISplitViewController {
         masterNC.view.backgroundColor = .black
         let detailNC = UINavigationController(rootViewController: EmptyViewController())
         viewControllers = [masterNC, detailNC]
+        view.backgroundColor = .background
+        preferredDisplayMode = .allVisible
     }
 }
 
-extension CountrySplitViewController: CountriesViewControllerDelegate {
+extension CountrySplitViewController:  CountriesViewControllerDelegate {
     func selectedCountry(_ country: Country) {
-        let nc = viewControllers[1] as! UINavigationController
-        var flagVC = nc.viewControllers[0] as? FlagViewController
-        if flagVC == nil {
-            flagVC = FlagViewController()
-            nc.viewControllers[0] = flagVC!
-        }
-        flagVC?.updateData(country: country)
+        showDetailViewController(detailsNavigationController, sender: nil)
+        flagController.updateData(country: country)
     }
 }
