@@ -86,7 +86,8 @@ pipeline {
                     try {
                         sh "/usr/local/bin/fastlane runTests" 
                     } catch(exc) {
-                        currentBuild.result = "UNSTABLE"
+                        currentBuild.result = "FAILURE"
+                        throw exc
                         error('There are failed tests.')
                     }
                 }
