@@ -43,11 +43,11 @@ pipeline {
             }
         }
 
-        stage('Send info to Slack') {
-            steps {
-                sh "/usr/local/bin/fastlane sendInfoToSlack message:\"${slackMessage}\""
-            }
-        }
+        // stage('Send info to Slack') {
+        //     steps {
+        //         sh "/usr/local/bin/fastlane sendInfoToSlack message:\"${slackMessage}\""
+        //     }
+        // }
 
         /********* Keychain *********/
 
