@@ -68,7 +68,8 @@ platform :ios do
 	end
 
 	desc "Run unit and ui tests"
- 	lane :runTests do
+	 lane :runTests do
+		reset_simulator_contents
     	run_tests(
       		scheme: "DiffableDataSourceTestApp",
     	)
