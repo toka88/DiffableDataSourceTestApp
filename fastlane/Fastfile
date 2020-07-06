@@ -35,24 +35,27 @@ platform :ios do
 	end
 
 	lane :matchPopulateJenkinsKeychain do
-		register_devices(devices_file: "./fastlane/devices.txt")
+		# register_devices(devices_file: "./fastlane/devices.txt")
 	  
 		match(
 		  type: "adhoc",
+		  git_url: "https://github.com/toka88/Cerificates.git",
 		  app_identifier: [
-			"com.goran.DiffableDataSourceTestApp"
+			"com.digitalatrium.ci.test.app"
 		  ]
 		)
 		match(
 		  type: "development",
+		  git_url: "https://github.com/toka88/Cerificates.git",
 		  app_identifier: [
-			"com.goran.DiffableDataSourceTestApp"
+			"com.digitalatrium.ci.test.app"
 		  ]
 		)
 		match(
 		  type: "appstore",
+		  git_url: "https://github.com/toka88/Cerificates.git",
 		  app_identifier: [
-			"com.goran.DiffableDataSourceTestApp"
+			"com.digitalatrium.ci.test.app"
 		  ]
 		)
 	end
@@ -127,5 +130,10 @@ platform :ios do
            		success: true,
            		slack_url: "https://hooks.slack.com/services/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",
        		)
+	end
+
+	lane :goran do
+		refreshJenkinsKeychain
+		matchPopulateJenkinsKeychain
 	end
 end

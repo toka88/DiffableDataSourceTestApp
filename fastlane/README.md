@@ -66,6 +66,11 @@ Create coverage html
 fastlane ios beta
 ```
 
+### ios goran
+```
+fastlane ios goran
+```
+
 
 ----
 
