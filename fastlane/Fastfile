@@ -12,7 +12,68 @@ platform :ios do
   	end
 
   	lane :screenshot do
-    		snapshot
+    	snapshot
+	end
+	  
+	lane :refreshJenkinsKeychain do
+		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
+  		create_keychain(
+    	name: "jenkins",
+    	password: "jenkins",
+    	timeout: false,
+    	lock_when_sleeps: false,
+    	unlock: true
+  	)
+	end
+
+	lane :matchPopulateJenkinsKeychain do
+		register_devices(devices_file: "./fastlane/devices.txt")
+	  
+		match(
+		  type: "adhoc",
+		  app_identifier: [
+			"com.goran.DiffableDataSourceTestApp"
+		  ]
+		)
+		match(
+		  type: "development",
+		  app_identifier: [
+			"com.goran.DiffableDataSourceTestApp"
+		  ]
+		)
+		match(
+		  type: "appstore",
+		  app_identifier: [
+			"com.goran.DiffableDataSourceTestApp"
+		  ]
+		)
+	end
+
+	lane :installPods do 
+		cocoapods(
+			clean_install: true,
+			podfile: "Podfile"
+		  )
+	end
+
+	desc "Run unit and ui tests"
+ 	lane :runTests do
+    	run_tests(
+      		scheme: "DiffableDataSourceTestApp",
+    	)
+  	end
+
+  	desc "Create coverage html"
+  	lane :createCoverageReport do
+    	slather(
+      		scheme: "DiffableDataSourceTestApp",
+      		proj: "DiffableDataSourceTestApp.xcodeproj",
+      		html: true,
+      		ignore: [
+        		"Pods/*",
+        		"DiffableDataSourceTestApp/Library/*"
+      		]
+    	)
   	end
 
 	lane :beta do
