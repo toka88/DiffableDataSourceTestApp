@@ -86,7 +86,7 @@ pipeline {
                     try {
                         sh "/usr/local/bin/fastlane runTests" 
                     } catch(exc) {
-                         echo "Uhvacen exception ${exc}"
+                        //  echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"
                         // throw exc
                         error('There are failed tests.')
