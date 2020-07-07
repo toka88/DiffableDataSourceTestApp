@@ -90,6 +90,7 @@ pipeline {
                         currentBuild.result = "FAILURE"
                         // throw exc
                         error('There are failed tests.')
+                        throw exc
                     }
                 }
             }
