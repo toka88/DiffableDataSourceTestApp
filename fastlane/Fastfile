@@ -70,6 +70,7 @@ platform :ios do
 	lane :runSwiftLint do |options|
 		begin
 			swiftlint(
+				strict: true,
 				raise_if_swiftlint_error: true
 			)
 		rescue => exception
