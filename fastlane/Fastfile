@@ -117,8 +117,8 @@ platform :ios do
 	desc "Upload app to TestFlight and notify testers"
 	lane :beta do |options|
 	
-		cert
-  		sigh(force: true)
+		refreshJenkinsKeychain
+		matchPopulateJenkinsKeychain
 		
 		increment_build_number(
       			build_number: latest_testflight_build_number() + 1,
