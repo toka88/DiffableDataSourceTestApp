@@ -57,7 +57,7 @@ pipeline {
 
         /********* Keychain *********/
 
-        stage('Reinitialize jenkins keychaix') {
+        stage('Reinitialize jenkins keychain') {
             when {
                 expression {
                     return env.shouldBuild != "false"
