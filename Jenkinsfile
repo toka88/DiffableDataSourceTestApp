@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "/usr/local/bin/fastlane runTests" 
+                        sh "/usr/local/bin/fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
                     } catch(exc) {
                         //  echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"

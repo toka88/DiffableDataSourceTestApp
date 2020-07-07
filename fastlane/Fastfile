@@ -69,14 +69,20 @@ platform :ios do
 	desc "Run unit and ui tests"
 	lane :runTests do
 		desc "Testing the app"
-		scan(
-			scheme: "DiffableDataSourceTestApp",
-			device: "iPhone 8",
-			output_style: "standard",
-			reset_simulator: true,
-			force_quit_simulator: true,
-			deployment_target_version:"13.5"
-		)
+		# begin
+			scan(
+				scheme: "DiffableDataSourceTestApp",
+				device: "iPhone 8",
+				output_style: "standard",
+				reset_simulator: true,
+				force_quit_simulator: true,
+				deployment_target_version:"13.5",
+				slack_only_on_failure: true,
+				slack_url: [:slack_url]
+			)
+		# rescue => exception
+			
+		# end
   	end
 
   	desc "Create coverage html"
