@@ -94,27 +94,29 @@ pipeline {
 
         /********* Keychain *********/
 
-        // stage('Reinitialize jenkins keychain') {
-        //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
-        //         }
-        //     }
-        //     steps {
-        //         sh "fastlane refreshJenkinsKeychain"
-        //     }
-        // }
+        stage('Reinitialize jenkins keychain') {
+            when {
+                anyOf { 
+                    branch "master";
+                    branch "development"
+                }
+            }
+            steps {
+                sh "fastlane refreshJenkinsKeychain"
+            }
+        }
 
-        // stage('Populate Jenkins Keychain') {
-        //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
-        //         }
-        //     }
-        //     steps {
-        //         sh "fastlane matchPopulateJenkinsKeychain"
-        //     }
-        // }
+        stage('Populate Jenkins Keychain') {
+            when {
+                anyOf { 
+                    branch "master";
+                    branch "development"
+                }
+            }
+            steps {
+                sh "fastlane matchPopulateJenkinsKeychain"
+            }
+        }
 
         /********* Deploying *********/
 
