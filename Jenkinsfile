@@ -120,7 +120,7 @@ pipeline {
 
         stage('Deploy to beta') {
             when {
-                branch 'development'
+                branch "development"
             }
             steps {
                 sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
