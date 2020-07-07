@@ -46,6 +46,11 @@ Fetch certicifates
 fastlane ios installPods
 ```
 Install pods.
+### ios runSwiftLint
+```
+fastlane ios runSwiftLint
+```
+Run SwiftLint
 ### ios runTests
 ```
 fastlane ios runTests
