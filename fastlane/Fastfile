@@ -31,6 +31,11 @@ platform :ios do
   	)
 	end
 
+	desc "Delete keychain"
+	lane :deleteJenkinsKeychain do
+		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
+	end
+
 	desc "Fetch certicifates"
 	lane :matchPopulateJenkinsKeychain do
 		# register_devices(devices_file: "./fastlane/devices.txt")
@@ -153,10 +158,12 @@ platform :ios do
 			groups: ["Public Group"]
 		)
 
+		deleteJenkinsKeychain
+
 		slack(
-           		message: "Successfully distributed a new beta build",
-           		success: true,
-           		slack_url: options[:slack_url],
-       		)
+           	message: "Successfully distributed a new beta build",
+           	success: true,
+           	slack_url: options[:slack_url],
+       	)
 	end
 end
