@@ -1,20 +1,25 @@
 default_platform(:ios)
 platform :ios do
- 	desc "Description of what the lane does"
-  	lane :tests do
-		desc "Testing the app"
-        	run_tests(scheme: "DiffableDataSourceTestApp")
-  	end
-
+ 	desc "Create new app"
   	lane :create_app do
-		desc "Create new app version"
+		desc "Create new app on AppleDeveloper, AppStoreConnect..."
   		produce
   	end
 
   	lane :screenshot do
     	snapshot
 	end
+
+	desc "Send custom message to slack channel"
+	lane :sendInfoToSlack do |options|
+		slack(
+			message: options[:message],
+			success: true,
+			slack_url: options[:slack_url],
+		)
+	end
 	  
+	desc "Refresh Jenkins keychains"
 	lane :refreshJenkinsKeychain do
 		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
   		create_keychain(
@@ -26,29 +31,34 @@ platform :ios do
   	)
 	end
 
+	desc "Fetch certicifates"
 	lane :matchPopulateJenkinsKeychain do
-		register_devices(devices_file: "./fastlane/devices.txt")
+		# register_devices(devices_file: "./fastlane/devices.txt")
 	  
 		match(
 		  type: "adhoc",
+		  git_url: "https://github.com/toka88/Cerificates.git",
 		  app_identifier: [
-			"com.goran.DiffableDataSourceTestApp"
+			"com.digitalatrium.ci.test.app"
 		  ]
 		)
 		match(
 		  type: "development",
+		  git_url: "https://github.com/toka88/Cerificates.git",
 		  app_identifier: [
-			"com.goran.DiffableDataSourceTestApp"
+			"com.digitalatrium.ci.test.app"
 		  ]
 		)
 		match(
 		  type: "appstore",
+		  git_url: "https://github.com/toka88/Cerificates.git",
 		  app_identifier: [
-			"com.goran.DiffableDataSourceTestApp"
+			"com.digitalatrium.ci.test.app"
 		  ]
 		)
 	end
 
+	desc "Install pods."
 	lane :installPods do 
 		cocoapods(
 			clean_install: true,
@@ -56,11 +66,39 @@ platform :ios do
 		  )
 	end
 
+	desc "Run SwiftLint"
+	lane :runSwiftLint do |options|
+		begin
+			swiftlint(
+				strict: true,
+				raise_if_swiftlint_error: true,
+				reporter: "html",
+				output_file: "fastlane/swiftlint-results.html"
+			)
+		rescue => exception
+			slack(
+				message: "SwiftLint failed: #{exception.message}. For more details read console log #{options[:build_url]}console",
+				success: false,
+				slack_url: options[:slack_url]
+			)
+			raise exception
+		end
+	end
+
 	desc "Run unit and ui tests"
- 	lane :runTests do
-    	run_tests(
-      		scheme: "DiffableDataSourceTestApp",
-    	)
+	lane :runTests do |options|
+		desc "Testing the app"
+			scan(
+				scheme: "DiffableDataSourceTestApp",
+				device: "iPhone 8",
+				output_style: "standard",
+				reset_simulator: true,
+				force_quit_simulator: true,
+				deployment_target_version:"13.5",
+				slack_only_on_failure: true,
+				slack_url: options[:slack_url],
+				clean: true
+			)
   	end
 
   	desc "Create coverage html"
@@ -76,7 +114,8 @@ platform :ios do
     	)
   	end
 
-	lane :beta do
+	desc "Upload app to TestFlight and notify testers"
+	lane :beta do |options|
 	
 		cert
   		sigh(force: true)
@@ -117,7 +156,7 @@ platform :ios do
 		slack(
            		message: "Successfully distributed a new beta build",
            		success: true,
-           		slack_url: "https://hooks.slack.com/services/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",
+           		slack_url: options[:slack_url],
        		)
 	end
 end

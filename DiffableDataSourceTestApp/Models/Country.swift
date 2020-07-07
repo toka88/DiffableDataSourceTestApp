@@ -13,7 +13,6 @@ struct Country: Codable, Hashable {
         return lhs.name == rhs.name
     }
 
-
     let name: String?
     let alpha2Code: String?
     let capital: String?

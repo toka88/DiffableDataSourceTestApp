@@ -81,7 +81,7 @@ final class CountriesViewController: BaseViewController {
     }
 
     private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, country) -> UITableViewCell? in
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, country -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(CountryCellTableViewCell.self, for: indexPath)
             cell.updateData(country)
             return cell
@@ -98,7 +98,7 @@ final class CountriesViewController: BaseViewController {
         do {
             countries = try JSONDecoder().decode([Country].self, from: data)
             filteredCountries = countries
-        } catch  {
+        } catch {
             debugPrint(error)
         }
     }
@@ -120,13 +120,13 @@ final class CountriesViewController: BaseViewController {
 
 // MARK: - UITableViewDelegate
 
-extension CountriesViewController: UITableViewDelegate { 
+extension CountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let country = dataSource.itemIdentifier(for: indexPath) else {
             return
         }
-        
+
         delegate?.selectedCountry(country)
     }
 }

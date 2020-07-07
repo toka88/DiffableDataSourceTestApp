@@ -17,8 +17,9 @@ private extension CountriesViewController {
 final class CountriesViewController: UIViewController {
 
     // MARK: - UI
-
+    // swiftlint:disable prohibited_interface_builder
     @IBOutlet weak var tableView: UITableView!
+    // swiftlint:enable prohibited_interface_builder
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -56,8 +57,8 @@ final class CountriesViewController: UIViewController {
     }
 
     private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, country) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCellTableViewCell") as! CountryCellTableViewCell
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, _, country -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCellTableViewCell") as? CountryCellTableViewCell
             cell.updateData(country)
             return cell
         })
@@ -73,7 +74,7 @@ final class CountriesViewController: UIViewController {
         do {
             countries = try JSONDecoder().decode([Country].self, from: data)
             filteredCountries = countries
-        } catch  {
+        } catch {
             debugPrint(error)
         }
     }

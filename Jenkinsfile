@@ -14,15 +14,32 @@ if(env.BRANCH_NAME == "master") {
     pollSpec = "* * * * 1-5"
 }
 
+/* Abort Jenkins if there is a new commit. */
+def buildNumber = env.BUILD_NUMBER as int
+if (buildNumber > 1) milestone(buildNumber - 1)
+milestone(buildNumber)  
+
 pipeline {
     agent any
+
+    environment {
+        // Fastlane Environment Variables
+        PATH = "$HOME/.fastlane/bin:" +
+                "$HOME/.rvm/gems/ruby-2.5.3/bin:" +
+                "$HOME/.rvm/gems/ruby-2.5.3@global/bin:" +
+                "$HOME/.rvm/rubies/ruby-2.5.3/bin:" +
+                "/usr/local/bin:" +
+                "$PATH"
+        LC_ALL = "en_US.UTF-8"
+        LANG = "en_US.UTF-8"
+    }
 
     options {
         ansiColor("xterm")
     }
  
     triggers {
-        pollSCM ignorePostCommitHooks: true, scmpoll_spec: pollSpec
+        pollSCM ignorePostCommitHooks: false, scmpoll_spec: pollSpec
     }
 
     stages {
@@ -43,9 +60,16 @@ pipeline {
             }
         }
 
-        stage('Send info to Slack') {
+        /********* Testing *********/
+
+        stage('Validate code with SwiftLint') {
+            when {
+                expression {
+                    return env.shouldBuild != "false"
+                }
+            }
             steps {
-                slackSend color: "#2222FF", message: slackMessage
+                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
             }
         }
 
@@ -58,10 +82,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        // Run all the tests
+                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
                     } catch(exc) {
-                        currentBuild.result = "UNSTABLE"
+                        currentBuild.result = "FAILURE"
                         error('There are failed tests.')
+                        throw exc
                     }
                 }
             }
@@ -69,70 +94,25 @@ pipeline {
 
         /********* Keychain *********/
 
-        stage('Reinitialize jenkins keychain') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                sh "fastlane refreshJenkinsKeychain"
-            }
-        }
-
-        stage('Populate Jenkins Keychain') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                sh "fastlane matchPopulateJenkinsKeychain"
-            }
-        }
-
-        /********* Testing *********/
-
-        stage('Run Unit and UI Tests') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                script {
-                    try {
-                        sh "fastlane runTests" 
-                    } catch(exc) {
-                        currentBuild.result = "UNSTABLE"
-                        error('There are failed tests.')
-                    }
-                }
-            }
-        }
-
-        /********* Building *********/
-
-        // stage('Install Pods') {
+        // stage('Reinitialize jenkins keychain') {
         //     when {
         //         expression {
         //             return env.shouldBuild != "false"
         //         }
         //     }
         //     steps {
-        //         // sh "pod install --deployment --repo-update"
-        //         sh "fastlane cocoapods"
+        //         sh "fastlane refreshJenkinsKeychain"
         //     }
         // }
 
-        // stage('Build application for beta') {
+        // stage('Populate Jenkins Keychain') {
         //     when {
         //         expression {
         //             return env.shouldBuild != "false"
         //         }
         //     }
         //     steps {
-        //         // Steps for beta build
+        //         sh "fastlane matchPopulateJenkinsKeychain"
         //     }
         // }
 
@@ -141,12 +121,9 @@ pipeline {
         stage('Deploy to beta') {
             when {
                 branch 'development'
-                // expression {
-                //     return env.shouldBuild != "false" 
-                // }
             }
             steps {
-                sh "fastlane beta"
+                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
             }
         }
 
@@ -172,18 +149,18 @@ pipeline {
         //     }
         // }
 
-        /********* Infirming *********/
+        /********* Informing *********/
 
-        stage('Inform Slack for success') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                slackSend color: "good", message: "*${env.JOB_NAME}* *${env.BRANCH_NAME}* job is completed successfully"
-            }
-        }
+        // stage('Inform Slack for success') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane sendInfoToSlack slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" message:\"*${env.JOB_NAME}* *${env.BRANCH_NAME}* job is completed successfully\""
+        //     }
+        // }
     }
 
     post {

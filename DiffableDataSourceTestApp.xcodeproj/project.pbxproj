@@ -22,7 +22,6 @@
 		2B54BD1B24A49C560054C0D2 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1A24A49C560054C0D2 /* EmptyViewController.swift */; };
 		2B54BD1D24A49D850054C0D2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1C24A49D850054C0D2 /* UIView.swift */; };
 		2B54BD1F24A4A76E0054C0D2 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */; };
-		2B973EA124A626400023F33D /* DiffableDataSourceTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */; };
 		2B973EAA24A626CE0023F33D /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B973EA924A626CE0023F33D /* NumberFormatterTests.swift */; };
 		2BF09C3424AF396E0050D191 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF09C3324AF396E0050D191 /* BaseViewController.swift */; };
 		2BF09C3624AF397F0050D191 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF09C3524AF397F0050D191 /* UIColor.swift */; };
@@ -57,7 +56,6 @@
 		2B54BD1C24A49D850054C0D2 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2B973E9E24A626400023F33D /* DiffableDataSourceTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiffableDataSourceTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceTestAppTests.swift; sourceTree = "<group>"; };
 		2B973EA224A626400023F33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B973EA924A626CE0023F33D /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		2BF09C3324AF396E0050D191 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				2B973EA824A626940023F33D /* Extensions */,
-				2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */,
 				2B973EA224A626400023F33D /* Info.plist */,
 			);
 			path = DiffableDataSourceTestAppTests;
@@ -209,6 +206,7 @@
 				2B03234F24A378240060E44B /* Sources */,
 				2B03235024A378240060E44B /* Frameworks */,
 				2B03235124A378240060E44B /* Resources */,
+				2BEF5FEF24B47BF200E78E5D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -228,6 +226,7 @@
 				2B973E9A24A626400023F33D /* Sources */,
 				2B973E9B24A626400023F33D /* Frameworks */,
 				2B973E9C24A626400023F33D /* Resources */,
+				2BEF5FF024B4826300E78E5D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -300,6 +299,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BEF5FEF24B47BF200E78E5D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		2BEF5FF024B4826300E78E5D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2B03234F24A378240060E44B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -325,7 +363,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B973EA124A626400023F33D /* DiffableDataSourceTestAppTests.swift in Sources */,
 				2B973EAA24A626CE0023F33D /* NumberFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,13 +516,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y5A2X83345;
+				DEVELOPMENT_TEAM = QP79MUYYJA;
 				INFOPLIST_FILE = DiffableDataSourceTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goran.DiffableDataSourceTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitalatrium.ci.test.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -497,13 +534,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y5A2X83345;
+				DEVELOPMENT_TEAM = QP79MUYYJA;
 				INFOPLIST_FILE = DiffableDataSourceTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.goran.DiffableDataSourceTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitalatrium.ci.test.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

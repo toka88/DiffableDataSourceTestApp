@@ -7,7 +7,6 @@
 //
 import UIKit
 
-
 extension UIColor {
     static var text: UIColor {
         return .orange

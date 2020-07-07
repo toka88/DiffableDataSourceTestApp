@@ -14,7 +14,7 @@ final class CountrySplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let masterNC = UINavigationController(rootViewController: CountriesViewController(delegate: self))
         masterNC.view.backgroundColor = .black
         let detailNC = UINavigationController(rootViewController: EmptyViewController())
@@ -24,7 +24,7 @@ final class CountrySplitViewController: UISplitViewController {
     }
 }
 
-extension CountrySplitViewController:  CountriesViewControllerDelegate {
+extension CountrySplitViewController: CountriesViewControllerDelegate {
     func selectedCountry(_ country: Country) {
         showDetailViewController(detailsNavigationController, sender: nil)
         flagController.updateData(country: country)
