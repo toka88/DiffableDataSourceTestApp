@@ -72,7 +72,8 @@ platform :ios do
 			swiftlint(
 				strict: true,
 				raise_if_swiftlint_error: true,
-				reporter: "html"
+				reporter: "html",
+				output_file: "fastlane/swiftlint-results.html"
 			)
 		rescue => exception
 			slack(

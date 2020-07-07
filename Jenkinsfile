@@ -93,7 +93,23 @@ pipeline {
                 }
             }
             steps {
-                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
+                try {
+                    sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
+                }
+                catch (exception) {
+                    publishHTML (target : [allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'fastlane',
+                        reportFiles: 'swiftlint-results.html',
+                        reportName: 'SwiftLint',
+                        reportTitles: 'The Report'])
+                    throw exception
+                }
+                finally {
+                    onFinally
+                }
+                
             }
         }
 
