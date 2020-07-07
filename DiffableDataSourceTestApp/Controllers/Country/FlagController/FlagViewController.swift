@@ -21,7 +21,7 @@ final class FlagViewController: BaseViewController {
     }()
 
     // MARK: - Life cycles
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

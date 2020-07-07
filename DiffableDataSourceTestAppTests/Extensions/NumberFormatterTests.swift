@@ -6,8 +6,8 @@
 //  Copyright © 2020 Goran Tokovic. All rights reserved.
 //
 
-import XCTest
 @testable import DiffableDataSourceTestApp
+import XCTest
 
 class NumberFormatterTests: XCTestCase {
     func testSeparatedHundreds() {

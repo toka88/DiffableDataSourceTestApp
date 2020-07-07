@@ -64,7 +64,7 @@ final class CountryCellTableViewCell: UITableViewCell {
             flagImageView.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: -20),
             flagImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             flagImageView.heightAnchor.constraint(equalToConstant: 70),
-            flagImageView.widthAnchor.constraint(equalToConstant: 70),
+            flagImageView.widthAnchor.constraint(equalToConstant: 70)
         ])
 
         // Country Label
@@ -72,7 +72,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             countryLabel.leadingAnchor.constraint(equalTo: flagImageView.trailingAnchor, constant: 10),
             countryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            countryLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            countryLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
         ])
 
         // Capital Label
@@ -80,7 +80,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             capitalLabel.leadingAnchor.constraint(equalTo: countryLabel.leadingAnchor),
             capitalLabel.trailingAnchor.constraint(equalTo: countryLabel.trailingAnchor),
-            capitalLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor),
+            capitalLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor)
         ])
 
         // Population Label
@@ -88,7 +88,7 @@ final class CountryCellTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             polulationLabel.leadingAnchor.constraint(equalTo: countryLabel.leadingAnchor),
             polulationLabel.trailingAnchor.constraint(equalTo: countryLabel.trailingAnchor),
-            polulationLabel.topAnchor.constraint(equalTo: capitalLabel.bottomAnchor),
+            polulationLabel.topAnchor.constraint(equalTo: capitalLabel.bottomAnchor)
         ])
     }
 
@@ -120,7 +120,10 @@ private extension UIImage {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        guard let cgImage = image?.cgImage else { return UIImage() }
+        guard let cgImage = image?.cgImage else {
+            return UIImage()
+        }
+
         return UIImage(cgImage: cgImage)
     }
 }
