@@ -64,7 +64,7 @@ pipeline {
                 }
             }
             steps {
-                sh "/usr/local/bin/fastlane refreshJenkinsKeychain"
+                sh "fastlane refreshJenkinsKeychain"
             }
         }
 
@@ -75,7 +75,7 @@ pipeline {
                 }
             }
             steps {
-                sh "/usr/local/bin/fastlane matchPopulateJenkinsKeychain"
+                sh "fastlane matchPopulateJenkinsKeychain"
             }
         }
 
@@ -88,7 +88,7 @@ pipeline {
                 }
             }
             steps {
-                sh "fastlane runSwiftLint"
+                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\""
             }
         }
 
@@ -101,7 +101,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "/usr/local/bin/fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
+                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
                     } catch(exc) {
                         //  echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"
@@ -148,7 +148,7 @@ pipeline {
                 // }
             }
             steps {
-                sh "/usr/local/bin/fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
+                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
             }
         }
 
