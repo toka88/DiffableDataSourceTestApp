@@ -66,6 +66,22 @@ platform :ios do
 		  )
 	end
 
+	desc "Run SwiftLint"
+	lane :runSwiftLint do
+		begin
+			swiftlint(
+				raise_if_swiftlint_error: true
+			)
+		rescue => exception
+			slack(
+				message: "SwiftLint failed: #{exception.message}",
+				success: false,
+				slack_url: options[:slack_url],
+			)
+			raise exception
+		end
+	end
+
 	desc "Run unit and ui tests"
 	lane :runTests do |options|
 		desc "Testing the app"

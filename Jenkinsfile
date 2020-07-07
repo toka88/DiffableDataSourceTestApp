@@ -81,6 +81,17 @@ pipeline {
 
         /********* Testing *********/
 
+        stage('Validate code with SwiftLint') {
+            when {
+                expression {
+                    return env.shouldBuild != "false"
+                }
+            }
+            steps {
+                sh "fastlane runSwiftLint"
+            }
+        }
+
         stage('Run Unit and UI Tests') {
             when {
                 expression {
