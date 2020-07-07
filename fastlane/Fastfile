@@ -78,8 +78,7 @@ platform :ios do
 				deployment_target_version:"13.5",
 				slack_only_on_failure: true,
 				slack_url: options[:slack_url],
-				clean: true,
-				output_types: "html"
+				clean: true
 			)
   	end
 

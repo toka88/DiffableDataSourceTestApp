@@ -22,7 +22,6 @@
 		2B54BD1B24A49C560054C0D2 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1A24A49C560054C0D2 /* EmptyViewController.swift */; };
 		2B54BD1D24A49D850054C0D2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1C24A49D850054C0D2 /* UIView.swift */; };
 		2B54BD1F24A4A76E0054C0D2 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */; };
-		2B973EA124A626400023F33D /* DiffableDataSourceTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */; };
 		2B973EAA24A626CE0023F33D /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B973EA924A626CE0023F33D /* NumberFormatterTests.swift */; };
 		2BF09C3424AF396E0050D191 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF09C3324AF396E0050D191 /* BaseViewController.swift */; };
 		2BF09C3624AF397F0050D191 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF09C3524AF397F0050D191 /* UIColor.swift */; };
@@ -57,7 +56,6 @@
 		2B54BD1C24A49D850054C0D2 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2B54BD1E24A4A76E0054C0D2 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2B973E9E24A626400023F33D /* DiffableDataSourceTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiffableDataSourceTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceTestAppTests.swift; sourceTree = "<group>"; };
 		2B973EA224A626400023F33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B973EA924A626CE0023F33D /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		2BF09C3324AF396E0050D191 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				2B973EA824A626940023F33D /* Extensions */,
-				2B973EA024A626400023F33D /* DiffableDataSourceTestAppTests.swift */,
 				2B973EA224A626400023F33D /* Info.plist */,
 			);
 			path = DiffableDataSourceTestAppTests;
@@ -325,7 +322,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B973EA124A626400023F33D /* DiffableDataSourceTestAppTests.swift in Sources */,
 				2B973EAA24A626CE0023F33D /* NumberFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
