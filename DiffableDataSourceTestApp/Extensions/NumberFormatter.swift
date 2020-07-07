@@ -9,10 +9,6 @@
 import Foundation
 
 extension NumberFormatter {
-
-
-
-    
     static let separatedHundreds: NumberFormatter = {
         let numberFormatter = NumberFormatter()
         numberFormatter.usesGroupingSeparator = true

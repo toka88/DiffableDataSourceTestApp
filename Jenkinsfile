@@ -93,21 +93,7 @@ pipeline {
                 }
             }
             steps {
-                script {
-                    try {
-                        sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
-                    }
-                    catch (exception) {
-                        publishHTML (target : [allowMissing: false,
-                            alwaysLinkToLastBuild: true,
-                            keepAll: true,
-                            reportDir: 'fastlane',
-                            reportFiles: 'swiftlint-results.html',
-                            reportName: 'SwiftLint',
-                            reportTitles: 'The Report'])
-                        throw exception
-                    }
-                }
+                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
             }
         }
 
@@ -149,9 +135,6 @@ pipeline {
         stage('Deploy to beta') {
             when {
                 branch 'development'
-                // expression {
-                //     return env.shouldBuild != "false" 
-                // }
             }
             steps {
                 sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
