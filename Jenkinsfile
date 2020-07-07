@@ -38,7 +38,7 @@ pipeline {
                         currentBuild.result = "NOT_BUILT"
                     }
 
-                    slackMessage = "*${env.JOB_NAME}* *${env.BRANCH_NAME}* received a new commit. ${skippingText}\nHere is commmit info: ${lastCommitInfo}"
+                    slackMessage = "*${env.JOB_NAME}* bjdsk *${env.BRANCH_NAME}* received a new commit. ${skippingText}\nHere is commmit info: ${lastCommitInfo}"
                 }
             }
         }
