@@ -58,7 +58,7 @@ platform :ios do
 		)
 	end
 
-	desc "Install pods"
+	desc "Install pods."
 	lane :installPods do 
 		cocoapods(
 			clean_install: true,
