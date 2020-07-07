@@ -163,7 +163,7 @@ pipeline {
         //     }
         // }
 
-        /********* Infirming *********/
+        /********* Informing *********/
 
         stage('Inform Slack for success') {
             when {
@@ -172,7 +172,7 @@ pipeline {
                 }
             }
             steps {
-                slackSend color: "good", message: "*${env.JOB_NAME}* *${env.BRANCH_NAME}* job is completed successfully"
+                sh "fastlane sendInfoToSlack slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" message:\"*${env.JOB_NAME}* *${env.BRANCH_NAME}* job is completed successfully\""
             }
         }
     }
