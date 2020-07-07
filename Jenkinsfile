@@ -14,6 +14,7 @@ if(env.BRANCH_NAME == "master") {
     pollSpec = "* * * * 1-5"
 }
 
+/* Abort Jenkins if there is a new commit. */
 def buildNumber = env.BUILD_NUMBER as int
 if (buildNumber > 1) milestone(buildNumber - 1)
 milestone(buildNumber)  
@@ -61,27 +62,27 @@ pipeline {
 
         /********* Keychain *********/
 
-        stage('Reinitialize jenkins keychain') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                sh "fastlane refreshJenkinsKeychain"
-            }
-        }
+        // stage('Reinitialize jenkins keychain') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane refreshJenkinsKeychain"
+        //     }
+        // }
 
-        stage('Populate Jenkins Keychain') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                sh "fastlane matchPopulateJenkinsKeychain"
-            }
-        }
+        // stage('Populate Jenkins Keychain') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane matchPopulateJenkinsKeychain"
+        //     }
+        // }
 
         /********* Testing *********/
 
