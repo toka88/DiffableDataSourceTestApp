@@ -71,7 +71,8 @@ platform :ios do
 		begin
 			swiftlint(
 				strict: true,
-				raise_if_swiftlint_error: true
+				raise_if_swiftlint_error: true,
+				reporter: "html"
 			)
 		rescue => exception
 			slack(
