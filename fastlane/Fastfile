@@ -69,7 +69,6 @@ platform :ios do
 	desc "Run unit and ui tests"
 	lane :runTests do
 		desc "Testing the app"
-		# begin
 			scan(
 				scheme: "DiffableDataSourceTestApp",
 				device: "iPhone 8",
@@ -78,11 +77,8 @@ platform :ios do
 				force_quit_simulator: true,
 				deployment_target_version:"13.5",
 				slack_only_on_failure: true,
-				slack_url: [:slack_url]
+				slack_url: options[:slack_url]
 			)
-		# rescue => exception
-			
-		# end
   	end
 
   	desc "Create coverage html"
@@ -140,7 +136,7 @@ platform :ios do
 		slack(
            		message: "Successfully distributed a new beta build",
            		success: true,
-           		slack_url: [:slack_url],
+           		slack_url: options[:slack_url],
        		)
 	end
 end
