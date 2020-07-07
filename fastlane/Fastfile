@@ -76,8 +76,11 @@ platform :ios do
 				reset_simulator: true,
 				force_quit_simulator: true,
 				deployment_target_version:"13.5",
-				slack_only_on_failure: true,
-				slack_url: options[:slack_url]
+				slack_only_on_failure: false,
+				slack_url: options[:slack_url],
+				clean: true,
+				open_report: true,
+				output_types: html
 			)
   	end
 
