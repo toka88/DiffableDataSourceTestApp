@@ -58,7 +58,7 @@ pipeline {
                 }
             }
             steps {
-                sh "/usr/local/bin/fastlane refreshJenkinsKeychain"
+                sh "fastlane refreshJenkinsKeychain"
             }
         }
 
@@ -69,7 +69,7 @@ pipeline {
                 }
             }
             steps {
-                sh "/usr/local/bin/fastlane matchPopulateJenkinsKeychain"
+                sh "fastlane matchPopulateJenkinsKeychain"
             }
         }
 
@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "/usr/local/bin/fastlane runTests" 
+                        sh "fastlane runTests" 
                     } catch(exc) {
                         //  echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"
@@ -131,7 +131,7 @@ pipeline {
                 // }
             }
             steps {
-                sh "/usr/local/bin/fastlane beta"
+                sh "fastlane beta"
             }
         }
 
