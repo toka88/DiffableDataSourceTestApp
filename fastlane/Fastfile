@@ -76,11 +76,7 @@ platform :ios do
 			slack(
 				message: "SwiftLint failed: #{exception.message}",
 				success: false,
-				slack_url: options[:slack_url],
-				payload: {  # Optional, lets you specify any number of your own Slack attachments.
-					"Build Date" => Time.new.to_s,
-					"Built by" => "Jenkins",
-				  }
+				slack_url: options[:slack_url]
 			)
 			raise exception
 		end
