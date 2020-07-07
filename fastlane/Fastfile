@@ -75,7 +75,7 @@ platform :ios do
 			)
 		rescue => exception
 			slack(
-				message: "SwiftLint failed: #{exception.message}",
+				message: "SwiftLint failed: #{exception.message}. For more details read console log #{options[:build_url]}",
 				success: false,
 				slack_url: options[:slack_url]
 			)

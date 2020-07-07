@@ -93,7 +93,7 @@ pipeline {
                 }
             }
             steps {
-                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\""
+                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
             }
         }
 
@@ -108,9 +108,7 @@ pipeline {
                     try {
                         sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
                     } catch(exc) {
-                        //  echo "Uhvacen exception ${exc}"
                         currentBuild.result = "FAILURE"
-                        // throw exc
                         error('There are failed tests.')
                         throw exc
                     }
@@ -129,17 +127,6 @@ pipeline {
         //     steps {
         //         // sh "pod install --deployment --repo-update"
         //         sh "fastlane cocoapods"
-        //     }
-        // }
-
-        // stage('Build application for beta') {
-        //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
-        //         }
-        //     }
-        //     steps {
-        //         // Steps for beta build
         //     }
         // }
 
