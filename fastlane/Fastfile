@@ -67,7 +67,7 @@ platform :ios do
 	end
 
 	desc "Run unit and ui tests"
-	lane :runTests do
+	lane :runTests do |options|
 		desc "Testing the app"
 			scan(
 				scheme: "DiffableDataSourceTestApp",
