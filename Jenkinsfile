@@ -123,7 +123,7 @@ pipeline {
                 branch "development"
             }
             steps {
-                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
+                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\""
             }
         }
 
