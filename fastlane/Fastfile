@@ -67,7 +67,7 @@ platform :ios do
 	end
 
 	desc "Run SwiftLint"
-	lane :runSwiftLint do
+	lane :runSwiftLint do |options|
 		begin
 			swiftlint(
 				raise_if_swiftlint_error: true
