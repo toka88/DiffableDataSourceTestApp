@@ -60,30 +60,6 @@ pipeline {
             }
         }
 
-        /********* Keychain *********/
-
-        // stage('Reinitialize jenkins keychain') {
-        //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
-        //         }
-        //     }
-        //     steps {
-        //         sh "fastlane refreshJenkinsKeychain"
-        //     }
-        // }
-
-        // stage('Populate Jenkins Keychain') {
-        //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
-        //         }
-        //     }
-        //     steps {
-        //         sh "fastlane matchPopulateJenkinsKeychain"
-        //     }
-        // }
-
         /********* Testing *********/
 
         stage('Validate code with SwiftLint') {
@@ -116,17 +92,27 @@ pipeline {
             }
         }
 
-        /********* Building *********/
+        /********* Keychain *********/
 
-        // stage('Install Pods') {
+        // stage('Reinitialize jenkins keychain') {
         //     when {
         //         expression {
         //             return env.shouldBuild != "false"
         //         }
         //     }
         //     steps {
-        //         // sh "pod install --deployment --repo-update"
-        //         sh "fastlane cocoapods"
+        //         sh "fastlane refreshJenkinsKeychain"
+        //     }
+        // }
+
+        // stage('Populate Jenkins Keychain') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane matchPopulateJenkinsKeychain"
         //     }
         // }
 
@@ -165,16 +151,16 @@ pipeline {
 
         /********* Informing *********/
 
-        stage('Inform Slack for success') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                sh "fastlane sendInfoToSlack slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" message:\"*${env.JOB_NAME}* *${env.BRANCH_NAME}* job is completed successfully\""
-            }
-        }
+        // stage('Inform Slack for success') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane sendInfoToSlack slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" message:\"*${env.JOB_NAME}* *${env.BRANCH_NAME}* job is completed successfully\""
+        //     }
+        // }
     }
 
     post {
