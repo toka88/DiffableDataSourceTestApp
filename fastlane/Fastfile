@@ -15,7 +15,7 @@ platform :ios do
 		slack(
 			message: options[:message],
 			success: true,
-			slack_url: "https://hooks.slack.com/services/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",
+			slack_url: options[:slack_url],
 		)
 	end
 	  
@@ -93,7 +93,7 @@ platform :ios do
   	end
 
 	desc "Upload app to TestFlight and notify testers"
-	lane :beta do
+	lane :beta do |options|
 	
 		cert
   		sigh(force: true)
@@ -134,7 +134,7 @@ platform :ios do
 		slack(
            		message: "Successfully distributed a new beta build",
            		success: true,
-           		slack_url: "https://hooks.slack.com/services/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",
+           		slack_url: [:slack_url],
        		)
 	end
 end

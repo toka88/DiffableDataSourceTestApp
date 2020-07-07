@@ -43,11 +43,11 @@ pipeline {
             }
         }
 
-        // stage('Send info to Slack') {
-        //     steps {
-        //         sh "/usr/local/bin/fastlane sendInfoToSlack message:\"${slackMessage}\""
-        //     }
-        // }
+        stage('Send info to Slack') {
+            steps {
+                sh "/usr/local/bin/fastlane sendInfoToSlack message:\"${slackMessage}\" slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\""
+            }
+        }
 
         /********* Keychain *********/
 
@@ -131,7 +131,7 @@ pipeline {
                 // }
             }
             steps {
-                sh "/usr/local/bin/fastlane beta"
+                sh "/usr/local/bin/fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
             }
         }
 

@@ -35,7 +35,7 @@ Send custom message to slack channel
 ```
 fastlane ios refreshJenkinsKeychain
 ```
-Refresh Jenkins keychain
+Refresh Jenkins keychains
 ### ios matchPopulateJenkinsKeychain
 ```
 fastlane ios matchPopulateJenkinsKeychain
