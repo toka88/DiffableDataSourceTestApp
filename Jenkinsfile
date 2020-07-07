@@ -17,6 +17,18 @@ if(env.BRANCH_NAME == "master") {
 pipeline {
     agent any
 
+    environment {
+        // Fastlane Environment Variables
+        PATH = "$HOME/.fastlane/bin:" +
+                "$HOME/.rvm/gems/ruby-2.5.3/bin:" +
+                "$HOME/.rvm/gems/ruby-2.5.3@global/bin:" +
+                "$HOME/.rvm/rubies/ruby-2.5.3/bin:" +
+                "/usr/local/bin:" +
+                "$PATH"
+        LC_ALL = "en_US.UTF-8"
+        LANG = "en_US.UTF-8"
+    }
+
     options {
         ansiColor("xterm")
     }

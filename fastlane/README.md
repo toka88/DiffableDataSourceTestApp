@@ -45,7 +45,7 @@ Fetch certicifates
 ```
 fastlane ios installPods
 ```
-Install pods
+Install pods.
 ### ios runTests
 ```
 fastlane ios runTests
