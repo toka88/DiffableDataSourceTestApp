@@ -3,5 +3,6 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 
 # Self-explanatory
 # swiftlint.strict = true
+swiftlint.lint_all_files = true
 swiftlint.lint_files inline_mode: true
 swiftlint.lint_files fail_on_error: true
