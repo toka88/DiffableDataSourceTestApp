@@ -94,7 +94,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
+                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\"" 
                     } catch(exc) {
                         currentBuild.result = "FAILURE"
                         error('There are failed tests.')
