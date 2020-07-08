@@ -62,6 +62,17 @@ pipeline {
 
         /********* Testing *********/
 
+        stage('Validate code with Danger') {
+            when {
+                expression {
+                    return env.shouldBuild != "false"
+                }
+            }
+            steps {
+                sh "danger-swift ci"
+            }
+        }
+
         stage('Validate code with SwiftLint') {
             when {
                 expression {
