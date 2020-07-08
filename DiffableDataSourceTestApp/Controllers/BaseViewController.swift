@@ -12,14 +12,10 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
-
         view.backgroundColor = .background
-        let array = [1, 2, 4, 5,6,7]
+        let array = [1, 2, 4, 5, 6, 7]
         if !array.isEmpty {
             print("Goran Tokovic")
-            
         }
     }
 }
