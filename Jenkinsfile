@@ -69,7 +69,7 @@ pipeline {
                 }
             }
             steps {
-                sh "danger-swift ci"
+                sh "bundle exec danger --fail-on-errors=true"
             }
         }
 
