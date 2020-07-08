@@ -31,6 +31,11 @@ platform :ios do
   	)
 	end
 
+	desc "Delete keychain"
+	lane :deleteJenkinsKeychain do
+		delete_keychain(name: "jenkins") if File.exists? File.expand_path("~/Library/Keychains/jenkins-db")
+	end
+
 	desc "Fetch certicifates"
 	lane :matchPopulateJenkinsKeychain do
 		# register_devices(devices_file: "./fastlane/devices.txt")
@@ -97,6 +102,7 @@ platform :ios do
 				deployment_target_version:"13.5",
 				slack_only_on_failure: true,
 				slack_url: options[:slack_url],
+				slack_message: "Tests failed. For more details read console log #{options[:build_url]}console",
 				clean: true
 			)
   	end
@@ -117,8 +123,8 @@ platform :ios do
 	desc "Upload app to TestFlight and notify testers"
 	lane :beta do |options|
 	
-		cert
-  		sigh(force: true)
+		refreshJenkinsKeychain
+		matchPopulateJenkinsKeychain
 		
 		increment_build_number(
       			build_number: latest_testflight_build_number() + 1,
@@ -133,7 +139,8 @@ platform :ios do
 
   		# Upload the application to Testflight
 		upload_to_testflight(
-			skip_waiting_for_build_processing: true,
+			skip_waiting_for_build_processing: false,
+			distribute_external: true,
   			beta_app_feedback_email: "goran.tokovic@digitalatrium.rs",
   			beta_app_description: "Beta app description",
 			beta_app_review_info: {
@@ -153,10 +160,12 @@ platform :ios do
 			groups: ["Public Group"]
 		)
 
+		deleteJenkinsKeychain
+
 		slack(
-           		message: "Successfully distributed a new beta build",
-           		success: true,
-           		slack_url: options[:slack_url],
-       		)
+           	message: "Successfully distributed a new beta build",
+           	success: true,
+           	slack_url: options[:slack_url],
+       	)
 	end
 end

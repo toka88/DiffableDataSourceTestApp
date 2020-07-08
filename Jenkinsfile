@@ -29,6 +29,7 @@ pipeline {
                 "$HOME/.rvm/gems/ruby-2.5.3@global/bin:" +
                 "$HOME/.rvm/rubies/ruby-2.5.3/bin:" +
                 "/usr/local/bin:" +
+                "/usr/bin/env:" +
                 "$PATH"
         LC_ALL = "en_US.UTF-8"
         LANG = "en_US.UTF-8"
@@ -62,16 +63,27 @@ pipeline {
 
         /********* Testing *********/
 
-        stage('Validate code with SwiftLint') {
+        stage('Validate code with Danger') {
             when {
                 expression {
                     return env.shouldBuild != "false"
                 }
             }
             steps {
-                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
+                sh "bundle exec danger"
             }
         }
+
+        // stage('Validate code with SwiftLint') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
+        //     }
+        // }
 
         stage('Run Unit and UI Tests') {
             when {
@@ -82,7 +94,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\"" 
+                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\"" 
                     } catch(exc) {
                         currentBuild.result = "FAILURE"
                         error('There are failed tests.')
@@ -96,8 +108,9 @@ pipeline {
 
         // stage('Reinitialize jenkins keychain') {
         //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
+        //         anyOf { 
+        //             branch "master";
+        //             branch "development"
         //         }
         //     }
         //     steps {
@@ -107,8 +120,9 @@ pipeline {
 
         // stage('Populate Jenkins Keychain') {
         //     when {
-        //         expression {
-        //             return env.shouldBuild != "false"
+        //         anyOf { 
+        //             branch "master";
+        //             branch "development"
         //         }
         //     }
         //     steps {
@@ -120,10 +134,10 @@ pipeline {
 
         stage('Deploy to beta') {
             when {
-                branch 'development'
+                branch "development"
             }
             steps {
-                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}"
+                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\""
             }
         }
 
