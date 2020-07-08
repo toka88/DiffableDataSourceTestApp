@@ -70,8 +70,9 @@ pipeline {
                 }
             }
             steps {
+                sh "bundle exec danger"
                 // sh "bundle exec danger --fail-on-errors=true"
-                sh "danger-swift ci"
+                // sh "danger-swift ci"
             }
         }
 
