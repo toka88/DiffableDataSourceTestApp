@@ -9,10 +9,10 @@ import UIKit
 
 extension UIColor {
     static var text: UIColor {
-        return .black
+        return .white
     }
 
     static var background: UIColor {
-        return .yellow
+        return .black
     }
 }
