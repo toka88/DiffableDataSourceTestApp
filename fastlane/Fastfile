@@ -102,6 +102,7 @@ platform :ios do
 				deployment_target_version:"13.5",
 				slack_only_on_failure: true,
 				slack_url: options[:slack_url],
+				slack_message: "Tests failed. For more details read console log #{options[:build_url]}console",
 				clean: true
 			)
   	end
