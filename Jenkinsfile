@@ -29,6 +29,7 @@ pipeline {
                 "$HOME/.rvm/gems/ruby-2.5.3@global/bin:" +
                 "$HOME/.rvm/rubies/ruby-2.5.3/bin:" +
                 "/usr/local/bin:" +
+                "/usr/bin/env:" +
                 "$PATH"
         LC_ALL = "en_US.UTF-8"
         LANG = "en_US.UTF-8"
