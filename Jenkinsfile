@@ -71,21 +71,19 @@ pipeline {
             }
             steps {
                 sh "bundle exec danger"
-                // sh "bundle exec danger --fail-on-errors=true"
-                // sh "danger-swift ci"
             }
         }
 
-        stage('Validate code with SwiftLint') {
-            when {
-                expression {
-                    return env.shouldBuild != "false"
-                }
-            }
-            steps {
-                sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
-            }
-        }
+        // stage('Validate code with SwiftLint') {
+        //     when {
+        //         expression {
+        //             return env.shouldBuild != "false"
+        //         }
+        //     }
+        //     steps {
+        //         sh "fastlane runSwiftLint slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\""
+        //     }
+        // }
 
         stage('Run Unit and UI Tests') {
             when {
