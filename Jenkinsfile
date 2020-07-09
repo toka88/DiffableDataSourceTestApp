@@ -5,8 +5,9 @@ def skippingText = ""
 def commitContainsSkip = 0
 def slackMessage = ""
 def shouldBuild = false
+def slackUrl = ""
 
-def pollSpec = "" 
+def pollSpec = ""
 
 if(env.BRANCH_NAME == "master") {
     pollSpec = "*/5 * * * *"
@@ -56,6 +57,7 @@ pipeline {
                         currentBuild.result = "NOT_BUILT"
                     }
 
+                    slackUrl =env.TEST_PROJECT_SLACK_WEBHOOK
                     slackMessage = "*${env.JOB_NAME}* *${env.BRANCH_NAME}* received a new commit. ${skippingText}\nHere is commmit info: ${lastCommitInfo}"
                 }
             }
@@ -94,7 +96,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "fastlane runTests slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\" build_url:\"${env.BUILD_URL}\"" 
+                        sh "fastlane runTests slack_url:\"${slackUrl}\" build_url:\"${env.BUILD_URL}\"" 
                     } catch(exc) {
                         currentBuild.result = "FAILURE"
                         error('There are failed tests.')
@@ -137,7 +139,7 @@ pipeline {
                 branch "development"
             }
             steps {
-                sh "fastlane beta slack_url:\"${env.TEST_PROJECT_SLACK_WEBHOOK}\""
+                sh "fastlane beta slack_url:\"${slackUrl}\""
             }
         }
 
